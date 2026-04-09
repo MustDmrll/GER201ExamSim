@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GER 201 Midterm Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg0:#0d1117;--bg1:#161b22;--bg2:#21262d;--bg3:#30363d;
+  --gold:#f0a500;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#a371f7;--cyan:#79c0ff;
+  --t1:#e6edf3;--t2:#8b949e;--t3:#6e7681;
+  --border:#30363d;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg0)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0d1b2a,#1a2744,#0d2137);padding:2.2rem 1rem 1.8rem;text-align:center;border-bottom:2px solid var(--gold);position:relative;overflow:hidden}
+.hdr::after{content:'🇩🇪';position:absolute;font-size:9rem;opacity:.04;right:1.5rem;top:-1rem;pointer-events:none}
+.hdr h1{font-size:clamp(1.6rem,4vw,2.6rem);background:linear-gradient(90deg,var(--gold),#fff8e0,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem;letter-spacing:-.5px}
+.hdr p{color:var(--t2);font-size:.9rem}
+.badge{display:inline-block;background:var(--red);color:#fff;padding:.15rem .7rem;border-radius:20px;font-size:.75rem;font-weight:700;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
+
+/* NAV */
+.nav{display:flex;justify-content:center;gap:.4rem;padding:.9rem 1rem;background:var(--bg1);border-bottom:1px solid var(--border);flex-wrap:wrap;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.nb{padding:.55rem 1.1rem;border:1px solid var(--border);background:var(--bg2);color:var(--t2);border-radius:8px;cursor:pointer;font-size:.85rem;transition:all .25s;display:flex;align-items:center;gap:.35rem}
+.nb:hover{border-color:var(--gold);color:var(--gold)}
+.nb.on{background:var(--gold);color:#0d1117;font-weight:700;border-color:var(--gold)}
+
+/* SECTIONS */
+.sec{display:none;padding:2rem 1.5rem;max-width:1200px;margin:0 auto;animation:fi .3s ease}
+.sec.on{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.stitle{font-size:1.7rem;color:var(--gold);margin-bottom:.35rem}
+.ssub{color:var(--t2);margin-bottom:1.8rem;font-size:.95rem}
+
+/* FLASHCARDS */
+.fc-ctrl{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.fb{padding:.35rem .9rem;border:1px solid var(--border);background:var(--bg2);color:var(--t3);border-radius:20px;cursor:pointer;font-size:.8rem;transition:all .2s}
+.fb.on,.fb:hover{border-color:var(--blue);color:var(--blue)}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.1rem}
+.fcc{height:155px;perspective:1000px;cursor:pointer}
+.fci{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.fcc.flip .fci{transform:rotateY(180deg)}
+.fcf,.fcb{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:.9rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border)}
+.fcf{background:var(--bg2)}
+.fcb{background:linear-gradient(135deg,#141a2b,#1a2340);border-color:var(--blue);transform:rotateY(180deg)}
+.fc-word{font-size:1.1rem;font-weight:700;margin-bottom:.4rem}
+.fc-hint{font-size:.68rem;color:var(--t3);margin-top:.4rem}
+.fc-tr{font-size:1rem;color:var(--gold);font-weight:700;margin-bottom:.45rem}
+.fc-ex{font-size:.72rem;color:var(--t2);font-style:italic;line-height:1.4}
+.ctag{display:inline-block;padding:.1rem .45rem;border-radius:10px;font-size:.68rem;margin-bottom:.4rem}
+.cv{background:rgba(121,192,255,.12);color:#79c0ff;border:1px solid rgba(121,192,255,.25)}
+.ca{background:rgba(240,165,0,.12);color:var(--gold);border:1px solid rgba(240,165,0,.25)}
+.cn{background:rgba(163,113,247,.12);color:var(--purple);border:1px solid rgba(163,113,247,.25)}
+.cp{background:rgba(63,185,80,.12);color:var(--green);border:1px solid rgba(63,185,80,.25)}
+
+/* GRAMMAR */
+.gc{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:1.4rem;margin-bottom:1.8rem}
+.gc h3{font-size:1.1rem;color:var(--purple);margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.4rem}
+.gc p{color:var(--t2);margin-bottom:.8rem;line-height:1.6;font-size:.9rem}
+.gt{width:100%;border-collapse:collapse;font-size:.87rem;margin:.7rem 0}
+.gt th{background:var(--bg3);color:var(--gold);padding:.55rem .7rem;text-align:left;border:1px solid var(--border)}
+.gt td{padding:.55rem .7rem;border:1px solid var(--border);vertical-align:top}
+.gt tr:nth-child(even){background:rgba(255,255,255,.02)}
+.gt tr:hover{background:var(--bg3)}
+.hl{color:var(--gold);font-weight:700}
+.hlb{color:var(--blue);font-weight:700}
+.hlg{color:var(--green);font-weight:700}
+.hlr{color:var(--red)}
+.ex{background:rgba(88,166,255,.07);border-left:3px solid var(--blue);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:.5rem 0;font-size:.88rem}
+.ex .de{color:var(--t1);font-weight:500}
+.ex .en{color:var(--t2);font-size:.82rem;margin-top:.2rem}
+.fm{background:rgba(163,113,247,.1);border:1px solid rgba(163,113,247,.35);border-radius:8px;padding:.7rem 1rem;margin:.5rem 0;font-family:monospace;font-size:.88rem;color:var(--purple)}
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:700px){.gg{grid-template-columns:1fr}}
+.gh{color:var(--gold);font-size:.9rem;font-weight:600;margin:1rem 0 .4rem}
+
+/* MISTAKES */
+.mk{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:1.4rem;margin-bottom:1.4rem;position:relative;overflow:hidden}
+.mk::after{content:'⚠';position:absolute;font-size:6rem;opacity:.04;right:.5rem;top:0;pointer-events:none}
+.mtag{display:inline-block;background:rgba(248,81,73,.15);color:var(--red);border:1px solid rgba(248,81,73,.35);padding:.15rem .7rem;border-radius:20px;font-size:.72rem;margin-bottom:.8rem}
+.mk h3{font-size:1.05rem;margin-bottom:.65rem}
+.mk>p{color:var(--t2);line-height:1.65;font-size:.9rem;margin-bottom:.9rem}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.8rem}
+@media(max-width:560px){.wr{grid-template-columns:1fr}}
+.ww{background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.25);border-radius:8px;padding:.75rem}
+.rr{background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.25);border-radius:8px;padding:.75rem}
+.ww label{font-size:.72rem;font-weight:700;color:var(--red);display:block;margin-bottom:.3rem}
+.rr label{font-size:.72rem;font-weight:700;color:var(--green);display:block;margin-bottom:.3rem}
+.ww p,.rr p{font-size:.87rem;color:var(--t1);margin:.2rem 0}
+
+/* QUIZ */
+.qwrap{max-width:680px;margin:0 auto}
+.qstart{text-align:center;padding:3rem 1.5rem;background:var(--bg2);border-radius:16px;border:1px solid var(--border)}
+.qstart h2{font-size:1.9rem;color:var(--gold);margin-bottom:.8rem}
+.qstart p{color:var(--t2);margin-bottom:1.8rem;line-height:1.65}
+.btnp{background:linear-gradient(135deg,var(--gold),#e08a10);color:#0d1117;border:none;padding:.85rem 2.2rem;border-radius:10px;font-size:1.05rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btnp:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(240,165,0,.28)}
+.qprog{margin-bottom:1.3rem}
+.pbt{display:flex;justify-content:space-between;font-size:.83rem;color:var(--t2)}
+.pbc{background:var(--bg2);border-radius:10px;height:7px;overflow:hidden;margin-top:.4rem}
+.pbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--blue));transition:width .5s ease;border-radius:10px}
+.sco{color:var(--gold);font-weight:700}
+.qqc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;margin-bottom:1.2rem}
+.qscen{background:rgba(240,165,0,.07);border:1px solid rgba(240,165,0,.18);border-radius:10px;padding:.9rem;margin-bottom:1.3rem;font-size:.88rem;color:var(--t2);line-height:1.5}
+.qscen strong{color:var(--gold)}
+.qquest{font-size:1.05rem;font-weight:600;margin-bottom:1.3rem;line-height:1.5}
+.qopts{display:flex;flex-direction:column;gap:.7rem}
+.qopt{padding:.85rem 1.1rem;border:1px solid var(--border);background:var(--bg1);color:var(--t1);border-radius:10px;cursor:pointer;transition:all .2s;text-align:left;font-size:.9rem}
+.qopt:hover:not(:disabled){border-color:var(--gold);background:var(--bg3)}
+.qopt.ok{border-color:var(--green)!important;background:rgba(63,185,80,.1)!important;color:var(--green)!important}
+.qopt.ng{border-color:var(--red)!important;background:rgba(248,81,73,.1)!important;color:var(--red)!important}
+.qfb{margin-top:.9rem;padding:.9rem 1rem;border-radius:10px;font-size:.87rem;line-height:1.55;display:none}
+.qfb.show{display:block}
+.qfb.yfb{background:rgba(63,185,80,.09);border:1px solid rgba(63,185,80,.28);color:var(--green)}
+.qfb.nfb{background:rgba(248,81,73,.09);border:1px solid rgba(248,81,73,.28);color:var(--red)}
+.qfb .fbex{color:var(--t2);margin-top:.4rem;font-size:.83rem}
+.btnn{background:var(--blue);color:#fff;border:none;padding:.65rem 1.6rem;border-radius:8px;font-size:.9rem;cursor:pointer;margin-top:.9rem;display:none;transition:background .2s}
+.btnn.show{display:inline-block}
+.btnn:hover{background:#4a90e2}
+.qres{text-align:center;padding:2.5rem 1.5rem;background:var(--bg2);border-radius:16px;border:1px solid var(--border);display:none}
+.remi{font-size:3.5rem;margin-bottom:.8rem}
+.rsco{font-size:2.8rem;font-weight:700;color:var(--gold);margin-bottom:.4rem}
+.rmsg{color:var(--t2);margin-bottom:1.8rem;line-height:1.65;font-size:.97rem}
+.rmsg strong{color:var(--t1)}
+@media(max-width:600px){.sec{padding:1rem}.nav{gap:.25rem}.nb{padding:.45rem .7rem;font-size:.78rem}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>🎓 Deutsch Midterm Guide</h1>
+  <p>Mustafa Demirel &nbsp;|&nbsp;  @mustdmrll</p>
+</div>
+
+<nav class="nav">
+  <button class="nb on" onclick="go('fc',this)">🃏 Flashcards</button>
+  <button class="nb" onclick="go('gr',this)">📐 Grammar</button>
+  <button class="nb" onclick="go('mk',this)">⚠️ Mistakes</button>
+  <button class="nb" onclick="go('qz',this)">🎮 Quiz</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     FLASHCARDS
+══════════════════════════════════════════════════════════ -->
+<section id="fc" class="sec on">
+  <h2 class="stitle">🃏 Vocabulary Flashcards</h2>
+  <p class="ssub">Click any card to flip it — translation + a memorable example sentence on the back.</p>
+  <div class="fc-ctrl">
+    <button class="fb on" onclick="fcFilter('all',this)">All</button>
+    <button class="fb" onclick="fcFilter('a',this)">🎨 Adjectives</button>
+    <button class="fb" onclick="fcFilter('v',this)">⚡ Verbs</button>
+    <button class="fb" onclick="fcFilter('n',this)">📦 Nouns</button>
+    <button class="fb" onclick="fcFilter('p',this)">💬 Phrases</button>
+  </div>
+  <div class="fc-grid" id="fcg"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     GRAMMAR
+══════════════════════════════════════════════════════════ -->
+<section id="gr" class="sec">
+  <h2 class="stitle">📐 Grammar Cheat Sheet</h2>
+  <p class="ssub">All rules from your notes — with dramatically absurd examples so they actually stick.</p>
+
+  <!-- Konjunktiv II -->
+  <div class="gc">
+    <h3>✨ Konjunktiv II — Wishes &amp; Hypotheticals</h3>
+    <p>Your notes say it perfectly: <span class="hl">haben → hätte</span> &nbsp;|&nbsp; <span class="hl">sein → wäre</span> &nbsp;|&nbsp; <span class="hl">all other verbs → würde + Infinitiv</span>. <strong>Never</strong> say "würde haben" or "würde sein"!</p>
+    <div class="fm">haben → <strong>hätte</strong> &nbsp;|&nbsp; sein → <strong>wäre</strong> &nbsp;|&nbsp; spielen → <strong>würde</strong> spielen &nbsp;|&nbsp; können → <strong>könnte</strong></div>
+    <div class="gg">
+      <div>
+        <table class="gt">
+          <tr><th>Pronoun</th><th>haben</th><th>sein</th></tr>
+          <tr><td>ich</td><td class="hl">hätte</td><td class="hl">wäre</td></tr>
+          <tr><td>du</td><td class="hl">hättest</td><td class="hl">wärst</td></tr>
+          <tr><td>er/sie/es</td><td class="hl">hätte</td><td class="hl">wäre</td></tr>
+          <tr><td>wir</td><td class="hl">hätten</td><td class="hl">wären</td></tr>
+          <tr><td>ihr</td><td class="hl">hättet</td><td class="hl">wäret</td></tr>
+          <tr><td>sie/Sie</td><td class="hl">hätten</td><td class="hl">wären</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="gt">
+          <tr><th>Pronoun</th><th>würde + Verb</th><th>könnte</th></tr>
+          <tr><td>ich</td><td class="hlb">würde</td><td class="hlg">könnte</td></tr>
+          <tr><td>du</td><td class="hlb">würdest</td><td class="hlg">könntest</td></tr>
+          <tr><td>er/sie/es</td><td class="hlb">würde</td><td class="hlg">könnte</td></tr>
+          <tr><td>wir</td><td class="hlb">würden</td><td class="hlg">könnten</td></tr>
+          <tr><td>ihr</td><td class="hlb">würdet</td><td class="hlg">könntet</td></tr>
+          <tr><td>sie/Sie</td><td class="hlb">würden</td><td class="hlg">könnten</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="ex"><div class="de">😴 Ich <span class="hl">hätte</span> gern ein freies Wochenende. (But the universe had other plans.)</div><div class="en">I would like a free weekend.</div></div>
+    <div class="ex"><div class="de">🏝️ Ich <span class="hl">wäre</span> lieber an einem See. (Literally anywhere but this office.)</div><div class="en">I would rather be at a lake.</div></div>
+    <div class="ex"><div class="de">🎂 Sie <span class="hl">würde</span> gern Pause machen. (She's been awake since 5am. Six coffees. No mercy.)</div><div class="en">She would like to take a break.</div></div>
+    <div class="ex"><div class="de">🎬 Wir <span class="hl">könnten</span> am Samstag ins Kino gehen. Hast du Lust? (Use könnten for suggestions!)</div><div class="en">We could go to the cinema on Saturday. Feel like it?</div></div>
+  </div>
+
+  <!-- Trotzdem -->
+  <div class="gc">
+    <h3>🔀 trotzdem (nevertheless / even so)</h3>
+    <p>Trotzdem = "buna rağmen". The second clause contradicts the first. KEY: when <em>trotzdem</em> starts a sentence, <strong>the verb comes immediately after it</strong> (verb-second rule!)</p>
+    <div class="fm">...[fact]. <strong>Trotzdem</strong> + VERB + Subject + rest...</div>
+    <div class="ex"><div class="de">Eva hat keine Zeit. <span class="hl">Trotzdem</span> soll sie reinkommen.</div><div class="en">Eva has no time. Nevertheless, she should come in.</div></div>
+    <div class="ex"><div class="de">Niki soll nicht so lange schlafen. <span class="hl">Trotzdem</span> bleibt er bis 10 Uhr im Bett. 🛌</div><div class="en">Niki shouldn't sleep so long. Nevertheless, he stays in bed until 10am.</div></div>
+    <div class="ex"><div class="de">Niki soll mittags nichts Süßes essen. <span class="hl">Trotzdem</span> isst er viel Kuchen. 🎂</div><div class="en">Niki shouldn't eat sweets at lunch. Nevertheless, he eats a lot of cake.</div></div>
+  </div>
+
+  <!-- Passiv -->
+  <div class="gc">
+    <h3>🔄 Passiv Präsens (Passive Voice)</h3>
+    <p>The thing being acted upon becomes the subject. The doer (optional) comes with <strong>von + Dativ</strong>.</p>
+    <div class="fm">Subject + <span class="hl">wird/werden</span> + (von + Dativ) + <span class="hl">Partizip II</span></div>
+    <table class="gt">
+      <tr><th>Subject</th><th>Helper verb</th><th>Example</th></tr>
+      <tr><td>Singular (der/die/das)</td><td class="hl">wird</td><td>Der Brief <span class="hl">wird</span> geschrieben.</td></tr>
+      <tr><td>Plural (die)</td><td class="hl">werden</td><td>Die Briefe <span class="hl">werden</span> geschrieben.</td></tr>
+    </table>
+    <div class="ex"><div class="de">Aktiv: Meine Mutter <span class="hlb">schreibt</span> eine E-Mail an meinen Vater.</div><div class="en">Active — subject does the action.</div></div>
+    <div class="ex"><div class="de">Passiv: Die E-Mail <span class="hl">wird</span> von meiner Mutter <span class="hl">geschrieben</span>.</div><div class="en">Passive — von + Dativ for the agent, Partizip II at the end.</div></div>
+    <div class="ex"><div class="de">Plural: Die E-Mails <span class="hl">werden</span> (von der Sekretärin) <span class="hl">gesendet</span>.</div><div class="en">Plural subject → werden. Agent is in parentheses because it's optional.</div></div>
+    <p style="font-size:.83rem;color:var(--t2);margin-top:.8rem">📦 Common Partizip II from notes: ernten→geerntet, waschen→gewaschen, verkaufen→verkauft, schreiben→geschrieben, hören→gehört, bringen→gebracht, lagern→gelagert, liefern→geliefert</p>
+  </div>
+
+  <!-- Adjektivdeklination -->
+  <div class="gc">
+    <h3>🎨 Adjektivdeklination (Adjective Endings)</h3>
+    <p class="gh">1. Mit definitem Artikel (der/die/das/die)</p>
+    <table class="gt">
+      <tr><th>Gender</th><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+      <tr><td>der (m)</td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">en</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>das (n)</td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>die (f)</td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>die (pl)</td><td>schön<span class="hl">en</span></td><td>schön<span class="hl">en</span></td><td>schön<span class="hl">en</span></td></tr>
+    </table>
+    <p style="font-size:.82rem;color:var(--t2);margin:.5rem 0">💡 Dativ with definite article: <strong>always -en</strong>. No exceptions. Commit this to memory now.</p>
+    <p class="gh">2. Mit indefinitem Artikel (ein/eine/ein) — same for mein-/kein-</p>
+    <table class="gt">
+      <tr><th>Gender</th><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+      <tr><td>der (m)</td><td>schön<span class="hl">er</span></td><td>schön<span class="hl">en</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>das (n)</td><td>schön<span class="hl">es</span></td><td>schön<span class="hl">es</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>die (f)</td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">en</span></td></tr>
+      <tr><td>die (pl/kein)</td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">e</span></td><td>schön<span class="hl">en</span></td></tr>
+    </table>
+    <p style="font-size:.82rem;color:var(--t2);margin:.5rem 0">⚠️ meine/keine + plural → always <strong>-en</strong>. Also Dativ everything → -en.</p>
+    <p class="gh">3. Ohne Artikel (no article at all)</p>
+    <table class="gt">
+      <tr><th>Gender</th><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+      <tr><td>der (m)</td><td>gut<span class="hl">er</span> Wein</td><td>gut<span class="hl">en</span></td><td>gut<span class="hl">em</span></td></tr>
+      <tr><td>das (n)</td><td>gut<span class="hl">es</span> Wetter</td><td>gut<span class="hl">es</span></td><td>gut<span class="hl">em</span></td></tr>
+      <tr><td>die (f)</td><td>interessant<span class="hl">e</span> Lage</td><td>interessant<span class="hl">e</span></td><td>interessant<span class="hl">er</span></td></tr>
+      <tr><td>die (pl)</td><td>nett<span class="hl">e</span> Leute</td><td>nett<span class="hl">e</span></td><td>nett<span class="hl">en</span></td></tr>
+    </table>
+    <div class="ex"><div class="de">Das ist ein <span class="hl">großer</span> Balkon. / Ich habe einen <span class="hl">großen</span> Balkon.</div><div class="en">Nominativ -er (m, indef.) vs Akkusativ -en (m, indef.)</div></div>
+  </div>
+
+  <!-- Komparation -->
+  <div class="gc">
+    <h3>📊 Komparation (Degrees of Comparison)</h3>
+    <div class="fm">Positiv | Komparativ (+-er) | Superlativ (am ...-sten) &nbsp;|&nbsp; Mustafa ist <strong>länger als</strong> Kaan. Ayşe ist <strong>so lang wie</strong> Lara.</div>
+    <table class="gt">
+      <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+      <tr><td>schön</td><td>schöner</td><td>am schönsten</td></tr>
+      <tr><td>lang</td><td>läng<span class="hl">er</span> ← Umlaut!</td><td>am längsten</td></tr>
+      <tr><td>dumm</td><td>dümmer</td><td>am dümmsten</td></tr>
+      <tr><td>groß</td><td>größer</td><td>am größten</td></tr>
+      <tr><td>hoch</td><td>höher ← irregular!</td><td>am höchsten</td></tr>
+      <tr><td>teuer</td><td>teurer ← drops e</td><td>am teuersten</td></tr>
+      <tr><td>alt</td><td>älter</td><td>am ältesten</td></tr>
+      <tr><td class="hlr">gern ⭐</td><td class="hlr">lieber</td><td class="hlr">am liebsten</td></tr>
+      <tr><td class="hlr">viel ⭐</td><td class="hlr">mehr</td><td class="hlr">am meisten</td></tr>
+      <tr><td class="hlr">gut ⭐</td><td class="hlr">besser</td><td class="hlr">am besten</td></tr>
+    </table>
+    <div class="ex"><div class="de">Am <span class="hl">meisten</span> gebe ich für meinen Urlaub aus. Aber am <span class="hl">liebsten</span> kaufe ich Kleidung.</div><div class="en">I spend the most on holiday. But I most like buying clothes.</div></div>
+  </div>
+
+  <!-- Verben mit Präpositionen -->
+  <div class="gc">
+    <h3>🔗 Verben mit Präpositionen</h3>
+    <div class="gg">
+      <div>
+        <p class="gh" style="color:var(--blue)">+ Akkusativ</p>
+        <table class="gt">
+          <tr><th>Verb + Prep</th><th>da-form / wo-form</th></tr>
+          <tr><td>warten <span class="hl">auf</span></td><td>darauf / worauf?</td></tr>
+          <tr><td>sich freuen <span class="hl">auf</span></td><td>darauf / worauf?</td></tr>
+          <tr><td>sich ärgern <span class="hl">über</span></td><td>darüber / worüber?</td></tr>
+          <tr><td>sich beschweren <span class="hl">über</span></td><td>darüber / worüber?</td></tr>
+          <tr><td>sich interessieren <span class="hl">für</span></td><td>dafür / wofür?</td></tr>
+          <tr><td>Lust haben <span class="hl">auf</span></td><td>darauf / worauf?</td></tr>
+          <tr><td>träumen <span class="hl">von</span></td><td>davon / wovon?</td></tr>
+        </table>
+      </div>
+      <div>
+        <p class="gh" style="color:var(--purple)">+ Dativ</p>
+        <table class="gt">
+          <tr><th>Verb + Prep</th><th>da-form / wo-form</th></tr>
+          <tr><td>zufrieden sein <span class="hl">mit</span></td><td>damit / womit?</td></tr>
+          <tr><td>sich treffen <span class="hl">mit</span></td><td>damit / womit?</td></tr>
+          <tr><td>sich erinnern <span class="hl">an</span></td><td>daran / woran?</td></tr>
+          <tr><td>erzählen <span class="hl">von</span></td><td>davon / wovon?</td></tr>
+          <tr><td>sprechen <span class="hl">über</span></td><td>darüber / worüber?</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="ex"><div class="de">Wor<span class="hl">auf</span> hat die Studentin Lust? — Sie hat Lust <span class="hl">auf</span> Sport.</div><div class="en">What does the student feel like? Use worauf/darauf because "auf" takes Akkusativ.</div></div>
+  </div>
+
+  <!-- Lokale Präpositionen -->
+  <div class="gc">
+    <h3>🗺️ Lokale Präpositionen: Wo? (Dativ) vs. Wohin? (Akkusativ)</h3>
+    <table class="gt">
+      <tr><th>Wo? → Dativ</th><th>Wohin? → Akkusativ</th><th>Woher? → Dativ</th></tr>
+      <tr><td>im Kino (= in dem)</td><td>ins Kino (= in das)</td><td>aus dem Kino</td></tr>
+      <tr><td>am See (= an dem)</td><td>an den See</td><td>vom See (= von dem)</td></tr>
+      <tr><td>in der Türkei</td><td>in die Türkei</td><td>aus der Türkei</td></tr>
+      <tr><td>auf dem Land</td><td>aufs Land</td><td>vom Land</td></tr>
+      <tr><td>in den Bergen</td><td>in die Berge</td><td>aus den Bergen</td></tr>
+    </table>
+    <p style="font-size:.83rem;color:var(--t2);margin:.7rem 0">⭐ <strong>nach</strong> + countries/cities without article (nach Berlin, nach Frankreich). <strong>zu</strong> + people/Dativ (zu Burak, zum Arzt). <strong>aus</strong> = leaving enclosed space. <strong>von</strong> = from open space or person.</p>
+    <div class="ex"><div class="de">Wo ist der Teppich? → Der Teppich ist <span class="hl">auf dem</span> Boden. (Dativ — it's just sitting there)</div></div>
+    <div class="ex"><div class="de">Wohin stellst du den Tisch? → Ich stelle ihn <span class="hl">neben das</span> Sofa. (Akkusativ — it's moving!)</div></div>
+    <p class="gh">Direction prepositions (from your notes):</p>
+    <table class="gt">
+      <tr><th>Phrase</th><th>Meaning</th></tr>
+      <tr><td>an ... vorbei</td><td>past something</td></tr>
+      <tr><td>um ... herum</td><td>around something</td></tr>
+      <tr><td>bis zum ...</td><td>up to / as far as</td></tr>
+      <tr><td>gegenüber (der S-Bahn)</td><td>opposite / across from</td></tr>
+      <tr><td>die Straße entlang</td><td>along the street</td></tr>
+      <tr><td>durch den Park</td><td>through the park</td></tr>
+      <tr><td>über die Straße</td><td>across the street</td></tr>
+    </table>
+  </div>
+
+  <!-- Indirekte Fragen -->
+  <div class="gc">
+    <h3>🤔 Indirekte Fragen (Indirect Questions)</h3>
+    <p>W-word or <strong>ob</strong> becomes a conjunction. VERB moves to the END. Use <strong>ob</strong> (= "whether") for yes/no questions.</p>
+    <div class="fm">Können Sie mir sagen, <strong>wo / wie / wann / ob</strong> ... [VERB LAST]?</div>
+    <div class="ex"><div class="de">Direct: <em>Wo kann ich eine neue Kreditkarte beantragen?</em></div></div>
+    <div class="ex"><div class="de">Indirect: Können Sie mir sagen, wo ich eine neue Kreditkarte beantragen <span class="hl">kann</span>?</div><div class="en">Can you tell me where I can apply for a new credit card?</div></div>
+    <div class="ex"><div class="de">Yes/No → ob: Darf ich fragen, <span class="hl">ob</span> Sie Ihren Ausweis dabei <span class="hl">haben</span>?</div><div class="en">May I ask whether you have your ID with you?</div></div>
+  </div>
+
+  <!-- Lassen -->
+  <div class="gc">
+    <h3>🔧 lassen (to have something done)</h3>
+    <p>lassen = getting someone else to do something for you. Conjugate lassen, put the action verb as infinitive at the end — just like modal verbs.</p>
+    <div class="fm">Subject + <strong>lasse/lässt/lassen</strong> + Object + <strong>Infinitiv</strong></div>
+    <div class="gg">
+      <table class="gt">
+        <tr><th>Pronoun</th><th>lassen</th></tr>
+        <tr><td>ich</td><td class="hl">lasse</td></tr>
+        <tr><td>du</td><td class="hl">lässt</td></tr>
+        <tr><td>er/sie/es</td><td class="hl">lässt</td></tr>
+        <tr><td>wir</td><td class="hl">lassen</td></tr>
+        <tr><td>ihr</td><td class="hl">lasst</td></tr>
+        <tr><td>sie/Sie</td><td class="hl">lassen</td></tr>
+      </table>
+      <div>
+        <div class="ex"><div class="de">🚲 Ich <span class="hl">lasse</span> mein Fahrrad <span class="hl">reparieren</span>.</div><div class="en">I'm having my bike repaired. (I'm NOT doing it myself!)</div></div>
+        <div class="ex"><div class="de">🧹 Wir <span class="hl">lassen</span> unsere Treppen <span class="hl">putzen</span>.</div><div class="en">We're having our stairs cleaned.</div></div>
+        <div class="ex"><div class="de">Du solltest dich vor dem Training beraten <span class="hl">lassen</span>.</div><div class="en">You should get advice before training. (lassen after modal → infinitive)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weil / Deshalb / Dass / Wenn -->
+  <div class="gc">
+    <h3>🔁 Conjunctions: weil / deshalb / dass / wenn</h3>
+    <div class="gg">
+      <div>
+        <p class="gh">weil (because) → VERB LAST</p>
+        <div class="ex"><div class="de">Ich bin gestürzt, <span class="hl">weil</span> ein Radfahrer nicht aufgepasst <span class="hlr">hat</span>.</div><div class="en">"Because" clause: verb at the END.</div></div>
+        <p class="gh">deshalb (therefore) → VERB SECOND</p>
+        <div class="ex"><div class="de">Ein Radfahrer hat nicht aufgepasst. <span class="hl">Deshalb</span> <span class="hlr">bin</span> ich gestürzt.</div><div class="en">Result: deshalb = pos.1, verb = pos.2. Same event — opposite perspective!</div></div>
+      </div>
+      <div>
+        <p class="gh">dass (that) → VERB LAST</p>
+        <div class="ex"><div class="de">Ich denke, <span class="hl">dass</span> mein Handy toll <span class="hlr">ist</span>. (I think that my phone is great.)</div></div>
+        <p class="gh">wenn (if / when) → VERB LAST → then main clause INVERTS</p>
+        <div class="ex"><div class="de"><span class="hl">Wenn</span> ich traurig <span class="hlr">bin</span>, <span class="hlb">kaufe</span> ich mir ein Geschenk. 🛍️</div><div class="en">Wenn-clause ends, main clause flips verb to front.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modalverben Präteritum -->
+  <div class="gc">
+    <h3>⏮️ Modalverben im Präteritum</h3>
+    <table class="gt">
+      <tr><th>Infinitiv</th><th>ich/er/sie</th><th>du</th><th>wir/sie/Sie</th><th>ihr</th></tr>
+      <tr><td class="hl">müssen</td><td>musste</td><td>musstest</td><td>mussten</td><td>musstet</td></tr>
+      <tr><td class="hl">können</td><td>konnte</td><td>konntest</td><td>konnten</td><td>konntet</td></tr>
+      <tr><td class="hl">wollen</td><td>wollte</td><td>wolltest</td><td>wollten</td><td>wolltet</td></tr>
+      <tr><td class="hl">dürfen</td><td>durfte</td><td>durftest</td><td>durften</td><td>durftet</td></tr>
+      <tr><td class="hl">sollen</td><td>sollte</td><td>solltest</td><td>sollten</td><td>solltet</td></tr>
+    </table>
+    <div class="ex"><div class="de">👶 Als Kind <span class="hl">musste</span> ich jeden Tag Gemüse essen. Ich <span class="hl">wollte</span> es nie, aber ich <span class="hl">konnte</span> nicht nein sagen.</div><div class="en">As a child I had to eat vegetables. I never wanted to, but I couldn't say no.</div></div>
+  </div>
+
+  <!-- Reflexive Verben -->
+  <div class="gc">
+    <h3>🪞 Reflexive Verben (Reflexive Verbs)</h3>
+    <p>The action loops back to the subject. Use reflexive pronouns (sich, mich, dich, uns, euch, sich).</p>
+    <div class="gg">
+      <table class="gt">
+        <tr><th>Pronoun</th><th>sich bewegen</th><th>Reflexiv Pron.</th></tr>
+        <tr><td>ich</td><td>bewege</td><td class="hl">mich</td></tr>
+        <tr><td>du</td><td>bewegst</td><td class="hl">dich</td></tr>
+        <tr><td>er/sie/es</td><td>bewegt</td><td class="hl">sich</td></tr>
+        <tr><td>wir</td><td>bewegen</td><td class="hl">uns</td></tr>
+        <tr><td>ihr</td><td>bewegt</td><td class="hl">euch</td></tr>
+        <tr><td>sie/Sie</td><td>bewegen</td><td class="hl">sich</td></tr>
+      </table>
+      <div>
+        <div class="ex"><div class="de">🏋️ Bewegen Sie <span class="hl">sich</span> regelmäßig? (Do you exercise regularly?)</div></div>
+        <div class="ex"><div class="de">😤 Ich ärgere <span class="hl">mich</span> über den Stau — schon wieder!</div><div class="en">I'm annoyed about the traffic jam — again!</div></div>
+        <div class="ex"><div class="de">🍎 Sie sollten <span class="hl">sich</span> gesund ernähren.</div><div class="en">You should eat healthily.</div></div>
+        <p style="font-size:.8rem;color:var(--t2);margin-top:.8rem">Key reflexives: sich freuen auf, sich ärgern über, sich erinnern an, sich interessieren für, sich beschweren über, sich treffen mit, sich ausruhen, sich verabreden</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Was für ein -->
+  <div class="gc">
+    <h3>❓ Was für ein...? (What kind of...?)</h3>
+    <div class="fm">Was für + ein/eine/ein/X (plural kein art.) → uses <strong>Akkusativ</strong> case</div>
+    <table class="gt">
+      <tr><th>Article Gender</th><th>Was für...?</th></tr>
+      <tr><td>der (m) → Akk: <span class="hl">einen</span></td><td>Was für <span class="hl">einen</span> Beruf haben Sie?</td></tr>
+      <tr><td>das (n) → Akk: <span class="hl">ein</span></td><td>Was für <span class="hl">ein</span> Hobby hat er?</td></tr>
+      <tr><td>die (f) → Akk: <span class="hl">eine</span></td><td>Was für <span class="hl">eine</span> Freundin hat er?</td></tr>
+      <tr><td>Plural → <span class="hl">no article</span></td><td>Was für Pläne hast du?</td></tr>
+    </table>
+  </div>
+
+  <!-- Artikel Tabelle -->
+  <div class="gc">
+    <h3>📋 Artikel Quick Reference (Nom / Akk / Dativ)</h3>
+    <table class="gt">
+      <tr><th>Gender</th><th>Nom</th><th>Akk</th><th>Dativ</th><th>Note</th></tr>
+      <tr><td>der (m)</td><td>der / ein</td><td class="hl">den / einen</td><td class="hlb">dem / einem</td><td>m changes most in Akk/Dat!</td></tr>
+      <tr><td>das (n)</td><td>das / ein</td><td>das / ein</td><td class="hlb">dem / einem</td><td>n stable in Nom/Akk</td></tr>
+      <tr><td>die (f)</td><td>die / eine</td><td>die / eine</td><td class="hlb">der / einer</td><td>f uses "der" in Dativ</td></tr>
+      <tr><td>die (pl)</td><td>die / —</td><td>die / —</td><td class="hlb">den / —</td><td>pl Dativ always "den"</td></tr>
+    </table>
+    <p style="font-size:.82rem;color:var(--t2);margin-top:.7rem">⭐ Dativ prepositions: <strong>mit, zu, bei, von, nach, aus, seit, gegenüber</strong> → always Dativ. &nbsp;|&nbsp; Akkusativ prep: <strong>für, durch, gegen, ohne, um</strong> → always Akkusativ.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MISTAKES
+══════════════════════════════════════════════════════════ -->
+<section id="mk" class="sec">
+  <h2 class="stitle">⚠️ Common Mistakes</h2>
+  <p class="ssub">Your friendly tutor explains the sneaky traps — in plain, honest language.</p>
+
+  <div class="mk">
+    <div class="mtag">TRAP #1 — Most confused</div>
+    <h3>Wo? vs. Wohin? — Location vs. Direction</h3>
+    <p>Imagine calling someone: "Where ARE you?" vs. "Where are you GOING?" — completely different in German because the article changes entirely. The golden rule: something <em>sitting still</em> = Dativ (im, am, beim). Something <em>moving toward</em> a place = Akkusativ (ins, ans, aufs). The preposition doesn't change — the article does!</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>Ich gehe in <strong>dem</strong> Kino. (That's "I walk around inside the cinema"!)</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Ich gehe <strong>ins</strong> Kino. (Wohin? → in das → ins)</p><p>Ich bin <strong>im</strong> Kino. (Wo? → in dem → im)</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #2 — Word order trap</div>
+    <h3>weil vs. deshalb — Same idea, totally different word order</h3>
+    <p>Both connect cause and effect, but they're grammatically opposite. <em>Weil</em> introduces the REASON and sends the verb to the end. <em>Deshalb</em> introduces the RESULT and keeps normal V2 order (deshalb = position 1, verb = position 2). The content is the same — only the direction flips.</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>Ich bin spät, weil der Zug <strong>hat</strong> Verspätung gehabt.</p><p>(Verb must go to end!)</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Ich bin spät, weil der Zug Verspätung gehabt <strong>hat</strong>. ✔</p><p>Der Zug hatte Verspätung. <strong>Deshalb</strong> bin ich spät. ✔</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #3 — Meaning confusion</div>
+    <h3>dass vs. wenn — "That" vs. "If/When"</h3>
+    <p>Both send the verb to the end, but they mean completely different things. <em>Dass</em> = "that" (introduces a fact or thought — use after "denken, glauben, finden, wissen"). <em>Wenn</em> = "if" or "when" (introduces a condition or time). Quick test: can you replace it with "the fact that"? → dass. Can you replace it with "in the case that"? → wenn.</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>Ich denke, <strong>wenn</strong> er morgen kommt. (Sounds like "I think IF he comes…" — not a thought!)</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Ich denke, <strong>dass</strong> er morgen kommt. ✔ (I think that he comes tomorrow)</p><p><strong>Wenn</strong> ich traurig bin, kaufe ich Schokolade. ✔</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #4 — Konjunktiv II classic</div>
+    <h3>hätte/wäre vs. würde — The #1 Konjunktiv II error</h3>
+    <p>Your notes are crystal clear: <em>haben</em> and <em>sein</em> have their own special Konjunktiv II forms. They do NOT use "würde." Absolutely everyone makes this mistake once — don't let it be you in the exam. Everything else? würde + infinitive. Just those two are special.</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>Ich <strong>würde haben</strong> gern Zeit.</p><p>Ich <strong>würde sein</strong> lieber zu Hause.</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Ich <strong>hätte</strong> gern Zeit. ✔</p><p>Ich <strong>wäre</strong> lieber zu Hause. ✔</p><p>Ich <strong>würde</strong> gern essen. ✔ (regular verb)</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #5 — Passive confusion</div>
+    <h3>von vs. an in Passive — Agent vs. Direction</h3>
+    <p>In passive sentences, <em>von + Dativ</em> means WHO does the action. <em>an + Akkusativ</em> means WHERE something is sent or directed. These look similar but carry opposite meanings. Always ask yourself: "Who is doing it?" (von) vs. "Where is it going?" (an).</p>
+    <div class="wr">
+      <div class="ww"><label>❌ CONFUSED</label><p>Die E-Mail wird <strong>an meiner</strong> Mutter geschrieben. (Dativ with "an" — grammatically off, meaning unclear)</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Die E-Mail wird <strong>von meiner</strong> Mutter geschrieben. ✔ (Mom wrote it)</p><p>Die E-Mail wird <strong>an meinen</strong> Vater geschrieben. ✔ (Sent to Dad)</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #6 — Adjective endings</div>
+    <h3>Dativ adjective endings — they're almost always -en</h3>
+    <p>With a definite article in Dativ, the adjective ALWAYS ends in -en. No gender exceptions. Memorize: "Definit + Dativ = -en, every time." The only place adjective endings are tricky is Nominativ/Akkusativ with indefinite articles — that's where -er/-es/-e come into play.</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>mit dem <strong>schöne</strong> Blick</p><p>in der <strong>ruhige</strong> Lage</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>mit dem schön<strong>en</strong> Blick ✔</p><p>in der ruhig<strong>en</strong> Lage ✔</p><p>mit leckerem Frühstück ✔ (ohne Artikel — different!)</p></div>
+    </div>
+  </div>
+
+  <div class="mk">
+    <div class="mtag">TRAP #7 — Indirect questions</div>
+    <h3>Forgetting to put the verb last in indirect questions</h3>
+    <p>When a question word (wo, wie, wann, warum) or "ob" becomes a conjunction inside a larger sentence, the verb must jump to the very end — exactly like with weil and dass. This trips people up because it still looks like a question, so the instinct is to keep question word order. Resist that instinct!</p>
+    <div class="wr">
+      <div class="ww"><label>❌ WRONG</label><p>Können Sie mir sagen, wo <strong>kann</strong> ich die Karte beantragen?</p><p>(Question-order verb stays — wrong!)</p></div>
+      <div class="rr"><label>✅ RIGHT</label><p>Können Sie mir sagen, wo ich die Karte beantragen <strong>kann</strong>? ✔</p><p>Darf ich fragen, <strong>ob</strong> Sie Ihren Ausweis dabei <strong>haben</strong>? ✔</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     QUIZ
+══════════════════════════════════════════════════════════ -->
+<section id="qz" class="sec">
+  <h2 class="stitle">🎮 The German Adventure Quiz</h2>
+  <p class="ssub">You've just landed in Germany with your friend Mustafa. Navigate the chaos using your grammar!</p>
+  <div class="qwrap">
+    <div id="qstart" class="qstart">
+      <div style="font-size:2.8rem;margin-bottom:.9rem">✈️ 🇩🇪 🎒</div>
+      <h2>Das Abenteuer beginnt!</h2>
+      <p>You and Mustafa have 24 hours in Germany. Hotels, banks, cafés, roundabouts — every situation requires real German grammar. Questions are randomized and shuffled every time. 20 questions total. Viel Erfolg!</p>
+      <br><button class="btnp" onclick="startQ()">🚀 Start the Adventure!</button>
+    </div>
+    <div id="qgame" style="display:none">
+      <div class="qprog">
+        <div class="pbt"><span id="qct">Question 1 of 20</span><span class="sco" id="qsc">Score: 0</span></div>
+        <div class="pbc"><div class="pbf" id="qpb" style="width:0%"></div></div>
+      </div>
+      <div class="qqc">
+        <div class="qscen" id="qscen"></div>
+        <div class="qquest" id="qquest"></div>
+        <div class="qopts" id="qopts"></div>
+        <div class="qfb" id="qfb"></div>
+        <button class="btnn" id="qnxt" onclick="nextQ()">Next →</button>
+      </div>
+    </div>
+    <div id="qres" class="qres">
+      <div class="remi" id="remi"></div>
+      <div class="rsco" id="rsco"></div>
+      <div class="rmsg" id="rmsg"></div>
+      <button class="btnp" onclick="resetQ()">🔄 Play Again!</button>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ───────────────── NAVIGATION ───────────────── */
+function go(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+
+/* ───────────────── FLASHCARD DATA ───────────────── */
+const CARDS=[
+  {de:'billig × teuer',cat:'a',en:'cheap × expensive',ex:'"Das Hostel ist billig, aber das Hotel ist schrecklich teuer!" — Mustafa, every trip.'},
+  {de:'schnell × langsam',cat:'a',en:'fast × slow',ex:'"Mein Laptop ist so langsam — eine Schnecke ist schneller." — Every student ever.'},
+  {de:'jung × alt',cat:'a',en:'young × old',ex:'"Mein Opa ist alt, aber sein Humor ist jünger als meiner." — True story.'},
+  {de:'hell × dunkel',cat:'a',en:'bright × dark',ex:'"Das Zimmer war so dunkel, ich dachte die Sonne ist ausgefallen."'},
+  {de:'groß × klein',cat:'a',en:'big × small',ex:'"Ich brauche ein großes Bett — nicht dieses kleine Sofa!" — Hotel review, 1 star.'},
+  {de:'gut × schlecht',cat:'a',en:'good × bad',ex:'"Das Essen war gut, aber die Musik war schlecht. Sehr schlecht."'},
+  {de:'schön × hässlich',cat:'a',en:'beautiful × ugly',ex:'"Die Stadt ist schön, aber der Parkplatz davor ist hässlich."'},
+  {de:'laut × leise',cat:'a',en:'loud × quiet',ex:'"Die Musik ist zu laut! Spielst du bitte leiser?" — My neighbors, always.'},
+  {de:'kalt × warm/heiß',cat:'a',en:'cold × warm/hot',ex:'"Im Winter ist es kalt, im Sommer zu heiß. Ich mag den Frühling." — Classic.'},
+  {de:'interessant × langweilig',cat:'a',en:'interesting × boring',ex:'"Deutsch ist interessant — viel interessanter als Montagmorgen."'},
+  {de:'schwierig × leicht',cat:'a',en:'difficult × easy',ex:'"Die Prüfung war schwierig, aber die Hausaufgaben waren leicht. Seltsam."'},
+  {de:'erschöpft',cat:'a',en:'exhausted',ex:'"Nach dem Marathon war ich so erschöpft, ich schlief 14 Stunden."'},
+  {de:'anstrengend',cat:'a',en:'exhausting / tiring',ex:'"Bergwandern ist anstrengend, aber die Aussicht macht alles wett!"'},
+  {de:'lustig × komisch',cat:'a',en:'funny / amusing',ex:'"Er macht lustige Witze, aber manchmal sind sie komisch seltsam."'},
+  {de:'ausgehen',cat:'v',en:'to go out',ex:'"Am Freitag gehe ich mit den Kollegen aus — endlich Wochenende!"'},
+  {de:'unternehmen',cat:'v',en:'to undertake / do',ex:'"Wir unternehmen heute einen Ausflug an den See. Mit Picknickkorb."'},
+  {de:'Zeit verbringen',cat:'v',en:'to spend time',ex:'"Ich verbringe mein Wochenende am liebsten auf dem Sofa."'},
+  {de:'besuchen',cat:'v',en:'to visit',ex:'"Wir besuchen nächsten Sommer Berlin — ich freue mich SO sehr!"'},
+  {de:'sich ärgern über',cat:'v',en:'to be annoyed about (+Akk)',ex:'"Ich ärgere mich über den Stau — schon wieder 45 Minuten!"'},
+  {de:'sich freuen auf',cat:'v',en:'to look forward to (+Akk)',ex:'"Ich freue mich so auf den Urlaub! Nur noch 3 Tage!"'},
+  {de:'sich interessieren für',cat:'v',en:'to be interested in (+Akk)',ex:'"Interessierst du dich für Kunst? Dann musst du unbedingt ins Museum!"'},
+  {de:'lassen',cat:'v',en:'to have sth. done / let',ex:'"Ich lasse mein Fahrrad reparieren — es macht komische Geräusche."'},
+  {de:'abbiegen',cat:'v',en:'to turn (a corner)',ex:'"Biegen Sie an der ersten Ampel nach rechts ab, dann geradeaus."'},
+  {de:'eröffnen',cat:'v',en:'to open (a business)',ex:'"Ein neues Café hat in unserer Straße eröffnet — ich bin schon Stammkunde!"'},
+  {de:'sich erinnern an',cat:'v',en:'to remember (+Akk)',ex:'"Erinnerst du dich an unsere erste Deutschstunde? Wir konnten nichts!"'},
+  {de:'ausruhen',cat:'v',en:'to rest',ex:'"Nach der Wanderung müssen wir uns ausruhen. Meine Beine schreien!"'},
+  {de:'der Ausflug (-¨e)',cat:'n',en:'day trip / excursion',ex:'"Wollen wir am Wochenende einen Ausflug ans Meer machen?"'},
+  {de:'die Unterkunft (-¨e)',cat:'n',en:'accommodation',ex:'"Wir suchen eine günstige Unterkunft für drei Nächte in München."'},
+  {de:'der Kreisverkehr',cat:'n',en:'roundabout',ex:'"Fahren Sie um den Kreisverkehr herum und nehmen Sie die dritte Ausfahrt."'},
+  {de:'die Ampel (-n)',cat:'n',en:'traffic light',ex:'"Biegen Sie an der roten Ampel ab. Nein, die ROTE — warten Sie!"'},
+  {de:'das Konto (-s)',cat:'n',en:'bank account',ex:'"Ich möchte ein Konto bei Ihrer Bank eröffnen, bitte."'},
+  {de:'die Kreuzung (-en)',cat:'n',en:'crossroads / junction',ex:'"An der Kreuzung biegen Sie links ab — da ist das Hotel."'},
+  {de:'der Vorschlag (-¨e)',cat:'n',en:'suggestion / proposal',ex:'"Ich habe einen Vorschlag: Wollen wir heute Abend ins Kino gehen?"'},
+  {de:'die Veranstaltung (-en)',cat:'n',en:'event / activity',ex:'"In der Stadt gibt es dieses Wochenende viele tolle Veranstaltungen."'},
+  {de:'der Wunsch (-¨e)',cat:'n',en:'wish / desire',ex:'"Mein größter Wunsch: eine Woche Urlaub ohne E-Mails."'},
+  {de:'Darauf habe ich keine Lust.',cat:'p',en:"I'm not in the mood for that.",ex:'"Bergwandern? Darauf habe ich keine Lust — das ist zu anstrengend!"'},
+  {de:'Das passt nicht zu mir.',cat:'p',en:"That doesn't work for me.",ex:'"Samstag um 6 Uhr morgens? Das passt nicht zu mir, tut mir leid."'},
+  {de:'Ich bin dafür.',cat:'p',en:"I'm in favor of it.",ex:'"Eine Radtour? Ich bin dafür! Klingt fantastisch, lass uns gehen!"'},
+  {de:'Ich bin dagegen.',cat:'p',en:"I'm against it.",ex:'"Zelten im Regen? Nein, ich bin absolut dagegen. Hotel oder nichts."'},
+  {de:'Einverstanden!',cat:'p',en:'Agreed! / Deal!',ex:'"Treffen wir uns um 19 Uhr? — Einverstanden, bis dann!"'},
+  {de:'Wie wäre es mit...?',cat:'p',en:'How about...?',ex:'"Wie wäre es mit einem Spaziergang am Abend? Das wäre schön."'},
+  {de:'Leider...',cat:'p',en:'Unfortunately...',ex:'"Leider kann ich heute Abend nicht kommen — ich muss leider arbeiten."'},
+  {de:'Tut mir leid, aber...',cat:'p',en:"I'm sorry, but...",ex:'"Tut mir leid, aber ich habe diese Woche leider keine freie Zeit."'},
+  {de:'trotzdem',cat:'p',en:'nevertheless / even so',ex:'"Sie ist krank, trotzdem geht sie zur Arbeit. Wahnsinn!"'},
+  {de:'immer noch',cat:'p',en:'still (continuing)',ex:'"Er schläft immer noch? Es ist schon 12 Uhr mittags — unglaublich!"'},
+];
+const CTAG={a:'ca',v:'cv',n:'cn',p:'cp'};
+const CLAB={a:'Adjective',v:'Verb',n:'Noun',p:'Phrase'};
+function buildFC(f='all'){
+  const g=document.getElementById('fcg');g.innerHTML='';
+  (f==='all'?CARDS:CARDS.filter(c=>c.cat===f)).forEach(c=>{
+    const d=document.createElement('div');d.className='fcc';
+    d.innerHTML=`<div class="fci"><div class="fcf"><span class="ctag ${CTAG[c.cat]}">${CLAB[c.cat]}</span><div class="fc-word">${c.de}</div><div class="fc-hint">👆 tap to flip</div></div><div class="fcb"><div class="fc-tr">${c.en}</div><div class="fc-ex">"${c.ex}"</div></div></div>`;
+    d.addEventListener('click',()=>d.classList.toggle('flip'));
+    g.appendChild(d);
+  });
+}
+function fcFilter(f,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');buildFC(f);
+}
+buildFC();
+
+/* ───────────────── QUIZ DATA ───────────────── */
+const QS=[
+  {sc:'🏨 You arrive at the hotel. The receptionist asks if you have a confirmation. You explain the condition.',q:"Complete: 'Ich kann Ihnen kein Zimmer geben, ___ Sie keine Bestätigung haben.'",opts:['weil','wenn','dass','deshalb'],cor:1,exp:"'Wenn' introduces a condition (if/when) with verb at end. 'Weil' = because — different meaning. 'Deshalb' never starts a subordinate clause!"},
+  {sc:'☕ At the café, you daydream about a free weekend.',q:"Which is the correct Konjunktiv II form of 'haben'?",opts:['würde haben','hätte','hat gehabt','haben würde'],cor:1,exp:"'Hätte' is the special Konjunktiv II of 'haben'. NEVER 'würde haben' — that's the #1 Konjunktiv mistake!"},
+  {sc:"🚲 Your bike broke down. You need the mechanic to fix it.",q:"How do you say 'I'm having my bike repaired'?",opts:['Ich repariere mein Fahrrad selbst.','Ich lasse mein Fahrrad reparieren.','Mein Fahrrad wird von mir repariert.','Ich will mein Fahrrad reparieren.'],cor:1,exp:"'Lassen + Infinitiv' = having someone else do it. Infinitive goes to the end — just like modal verbs!"},
+  {sc:'🗺️ Mustafa is already at the cinema waiting for you.',q:"He says: 'Ich bin ___.' Which correctly means he IS at the cinema (not going)?",opts:['ins Kino','in das Kino','im Kino','in dem Kinos'],cor:2,exp:"'Im Kino' (in dem) = Dativ → already there (Wo?). 'Ins Kino' (in das) = Akkusativ → going there (Wohin?). In dem contracts to 'im'."},
+  {sc:'📬 The hotel secretary sends emails every day.',q:"Turn active → passive: 'Die Sekretärin sendet die E-Mails.'",opts:['Die E-Mails wird von der Sekretärin gesendet.','Die E-Mails werden von der Sekretärin gesendet.','Die E-Mails werden von der Sekretärin senden.','Die E-Mails wird gesendet werden.'],cor:1,exp:"Plural subject (Die E-Mails) → 'werden'. 'Von der Sekretärin' = von + Dativ. Partizip II 'gesendet' at the end."},
+  {sc:'🍕 You want to suggest Saturday pizza to Mustafa.',q:"Which uses 'könnten' correctly as a suggestion?",opts:['Wir müssen am Samstag Pizza essen.','Wir könnten am Samstag Pizza essen. Hast du Lust?','Wir können am Samstag Pizza essen haben.','Wir würden könnten am Samstag essen.'],cor:1,exp:"'Könnten' = polite suggestion (Konjunktiv II of können). Much softer than 'müssen'. Always great for proposals!"},
+  {sc:'😴 Niki was told not to sleep late. He ignored everyone.',q:"Complete: 'Niki soll nicht so lange schlafen. ___ bleibt er bis 10 Uhr im Bett.'",opts:['Deshalb','Weil','Trotzdem','Wenn'],cor:2,exp:"'Trotzdem' = nevertheless / even so (buna rağmen). When it starts a sentence, the verb comes immediately after it!"},
+  {sc:'🏦 You need a new credit card. You ask the bank employee politely.',q:"Which indirect question is grammatically correct?",opts:['Können Sie mir sagen, wo kann ich eine neue Kreditkarte beantragen?','Können Sie mir sagen, wo ich eine neue Kreditkarte beantragen kann?','Können Sie mir sagen, dass ich eine Kreditkarte beantragen kann?','Wo ich eine neue Kreditkarte beantragen kann, sagen Sie mir?'],cor:1,exp:"Indirect questions: W-word becomes a conjunction, verb jumps to the END. 'Kann' moves from position 2 to the last position."},
+  {sc:'🏨 You describe the hotel room (das Zimmer, das-word, ein-article, Nominativ).',q:"Fill in: 'Das ist ein ___ Zimmer.' (schön)",opts:['schöne','schöner','schönes','schönen'],cor:2,exp:"Indefinite article + das-gender + Nominativ → adjective ending is '-es'. The article 'ein' doesn't show gender here, so the adjective must!"},
+  {sc:'🚗 You explain why you were late to Mustafa.',q:"Which sentence is correct with 'weil'?",opts:['Ich bin spät, weil der Zug hat Verspätung gehabt.','Ich bin spät, weil der Zug Verspätung gehabt hat.','Ich bin spät, deshalb der Zug Verspätung hatte.','Der Zug hatte Verspätung, weil ich bin spät.'],cor:1,exp:"With 'weil', the conjugated verb (the 'hat' in 'hat gehabt') goes to the VERY END of the clause."},
+  {sc:'📊 Hotel A costs 80€, Hotel B costs 120€. You prefer Hotel A.',q:"How do you say 'Hotel A is cheaper than Hotel B'?",opts:['Hotel A ist billiger wie Hotel B.','Hotel A ist billiger als Hotel B.','Hotel A ist am billigsten als Hotel B.','Hotel A ist so billig als Hotel B.'],cor:1,exp:"Komparativ uses 'als' (than). 'Wie' is only for equality: 'so... wie'. Komparativ of 'billig' = 'billiger' (just add -er)."},
+  {sc:"🎁 It's Mustafa's birthday. You're buying him a book.",q:"Which is the correct Dativ pronoun for 'er' (Mustafa)?",opts:['ihn','er','ihm','sein'],cor:2,exp:"er → ihn (Akkusativ) → ihm (Dativ). You're giving something TO him = Dativ. 'Ich schenke IHM ein Buch.'"},
+  {sc:'⏮️ You talk about childhood — things you had to do.',q:"What is the Präteritum of 'können' for 'ich'?",opts:['habe können','kann','konnte','könnte'],cor:2,exp:"'Konnte' = simple past of können. Note: 'könnte' = Konjunktiv II (could/would be able to) — completely different meaning!"},
+  {sc:"🏔️ Mustafa suggests hiking. You'd rather die.",q:"How do you express 'I'm not in the mood for that. That's too exhausting.'",opts:['Darauf habe ich keine Lust. Das ist zu anstrengend.','Das passt nicht zu mir. Das ist langweilig.','Ich bin dagegen. Das ist interessant.','Leider. Das ist billig.'],cor:0,exp:"'Darauf habe ich keine Lust' = I'm not in the mood for THAT (darauf refers back to the suggestion). 'Anstrengend' = exhausting. Perfect rejection combo!"},
+  {sc:'🪪 The hotel asks to see your ID. Very politely.',q:"Which indirect yes/no question is correct?",opts:['Darf ich fragen, wenn Sie Ihren Ausweis dabei haben?','Darf ich fragen, ob Sie Ihren Ausweis dabei haben?','Darf ich fragen, dass Sie Ihren Ausweis dabei haben?','Darf ich fragen, wo Sie Ihren Ausweis dabei haben?'],cor:1,exp:"For YES/NO indirect questions, use 'ob' (= whether). W-words won't work here since there's no question word in the original yes/no question."},
+  {sc:'🏠 You describe where the beautiful lamp is (die Lampe, feminine, Dativ).',q:"'Das Licht hängt in ___ alten Lampe.'",opts:['dem ... alte','der ... alten','die ... alte','den ... alten'],cor:1,exp:"'Die Lampe' = feminine. In Dativ, die → der. With definite article in Dativ, adjective ALWAYS ends in -en. → 'in der alten Lampe'."},
+  {sc:'✈️ You want to know what kind of flight Mustafa booked (der Flug, masculine).',q:"'Was für ___ Flug hast du gebucht?'",opts:['ein','einen','eine','einem'],cor:1,exp:"'Was für ein' uses Akkusativ. 'Der Flug' = masculine → Akkusativ masculine = 'einen'. So: 'Was für EINEN Flug?' Object = Akkusativ."},
+  {sc:"😍 You're telling someone your ultimate vacation dream.",q:"How do you say 'I would most like to travel to Izmir'?",opts:['Ich würde am liebsten nach Izmir fahren.','Ich würde am meisten nach Izmir fahren.','Ich hätte am liebsten nach Izmir gefahren.','Ich wäre am liebsten nach Izmir fahren.'],cor:0,exp:"'Am liebsten' = superlative of 'gern'. 'Würde fahren' = Konjunktiv II of fahren. 'Nach Izmir' = no article for city names."},
+  {sc:"🚪 You're leaving the hotel (an enclosed building).",q:"Which preposition do you use when leaving an enclosed/indoor place?",opts:['von dem Hotel','aus dem Hotel','von Hotel','nach Hotel'],cor:1,exp:"'Aus' = leaving an enclosed/indoor space (aus dem Hotel, aus dem Zimmer). 'Von' = from an open area or from a person (vom Fußballplatz, von Claudia)."},
+  {sc:'📝 The letter was written by your colleague (die Kollegin).',q:"Choose the grammatically correct passive sentence:",opts:['Der Brief wird von meiner Kollegin geschrieben.','Der Brief wird von meiner Kollegin schreiben.','Der Brief wird durch meine Kollegin geschrieben.','Der Brief wird von meiner Kollegen geschrieben.'],cor:0,exp:"'Wird' for singular. 'Von + Dativ' for agent. 'Kollegin' (f) → 'meiner Kollegin' (Dativ feminine). Partizip II 'geschrieben' at the end."},
+];
+
+let qArr=[],qIdx=0,score=0,answered=false;
+function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function startQ(){
+  qArr=shuf(QS).map(q=>{
+    const pairs=q.opts.map((o,i)=>({o,ok:i===q.cor}));
+    const sp=shuf(pairs);
+    return{...q,sOpts:sp.map(p=>p.o),sCor:sp.findIndex(p=>p.ok)};
+  });
+  qIdx=0;score=0;answered=false;
+  document.getElementById('qstart').style.display='none';
+  document.getElementById('qres').style.display='none';
+  document.getElementById('qgame').style.display='block';
+  renderQ();
+}
+function renderQ(){
+  const q=qArr[qIdx],tot=qArr.length;
+  document.getElementById('qct').textContent=`Question ${qIdx+1} of ${tot}`;
+  document.getElementById('qsc').textContent=`Score: ${score}`;
+  document.getElementById('qpb').style.width=`${(qIdx/tot)*100}%`;
+  document.getElementById('qscen').innerHTML=`<strong>📍 Scene:</strong> ${q.sc}`;
+  document.getElementById('qquest').textContent=q.q;
+  const oc=document.getElementById('qopts');oc.innerHTML='';
+  q.sOpts.forEach((opt,i)=>{
+    const b=document.createElement('button');b.className='qopt';b.textContent=opt;
+    b.onclick=()=>pickA(i,b,q);oc.appendChild(b);
+  });
+  const fb=document.getElementById('qfb');fb.className='qfb';fb.innerHTML='';
+  document.getElementById('qnxt').className='btnn';
+  answered=false;
+}
+function pickA(idx,btn,q){
+  if(answered)return;answered=true;
+  document.querySelectorAll('.qopt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qfb');
+  if(idx===q.sCor){
+    score++;btn.classList.add('ok');
+    fb.className='qfb yfb show';
+    fb.innerHTML=`✅ <strong>Richtig!</strong><div class="fbex">${q.exp}</div>`;
+  }else{
+    btn.classList.add('ng');
+    document.querySelectorAll('.qopt')[q.sCor].classList.add('ok');
+    fb.className='qfb nfb show';
+    fb.innerHTML=`❌ <strong>Leider falsch.</strong> Correct: <em>"${q.sOpts[q.sCor]}"</em><div class="fbex">${q.exp}</div>`;
+  }
+  document.getElementById('qsc').textContent=`Score: ${score}`;
+  document.getElementById('qnxt').className='btnn show';
+}
+function nextQ(){qIdx++;qIdx>=qArr.length?showRes():renderQ();}
+function showRes(){
+  document.getElementById('qgame').style.display='none';
+  const r=document.getElementById('qres');r.style.display='block';
+  const tot=qArr.length,pct=Math.round((score/tot)*100);
+  const data=pct===100?
+    ['🏆',`PERFEKT! ${score}/${tot} (${pct}%)`,`<strong>Legendary.</strong> You navigated hotels, banks, roundabouts, and grammar traps without a single stumble. Your Konjunktiv II is sharper than Mustafa's jokes. You're ready — go sleep and ace that exam tomorrow!`]:
+  pct>=80?
+    ['🥇',`Ausgezeichnet! ${score}/${tot} (${pct}%)`,`<strong>Excellent performance!</strong> You got through most of Germany without getting grammatically lost. A quick review of the ones you missed and you'll absolutely nail tomorrow's exam. Confidence level: very high.`]:
+  pct>=60?
+    ['💪',`Gut gemacht! ${score}/${tot} (${pct}%)`,`<strong>More than half conquered!</strong> Your instincts are there, but a few tricky spots remain. Head back to the Grammar sheet — especially Adjektivdeklination, Passiv, and Konjunktiv II. You've got time. Use it!`]:
+  pct>=40?
+    ['📚',`Nicht schlecht! ${score}/${tot} (${pct}%)`,`<strong>Foundations are there,</strong> but Germany wasn't fully conquered today. Hit the Grammar Cheat Sheet and Mistakes sections hard, then come back and retry. Every round makes you stronger — and the questions shuffle!`]:
+    ['🔄',`Übung macht den Meister! ${score}/${tot} (${pct}%)`,`<strong>Don't panic</strong> — that's literally what study sessions are for! Go through Grammar and Mistakes carefully, read every example sentence, then come back and try again. You have tonight. Make it count!`];
+  document.getElementById('remi').textContent=data[0];
+  document.getElementById('rsco').textContent=data[1];
+  document.getElementById('rmsg').innerHTML=data[2];
+}
+function resetQ(){document.getElementById('qres').style.display='none';document.getElementById('qstart').style.display='block';}
+</script>
+</body>
+</html>
